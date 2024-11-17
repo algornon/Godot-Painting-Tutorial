@@ -1,0 +1,66 @@
+[gd_scene load_steps=2 format=3 uid="uid://b7o0y770a8aaq"]
+
+[ext_resource type="Script" path="res://scripts/canvas.gd" id="1_yb6pt"]
+
+[node name="Canvas" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 1
+script = ExtResource("1_yb6pt")
+
+[node name="CenterContainer" type="CenterContainer" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="PanelContainer" type="PanelContainer" parent="CenterContainer"]
+layout_mode = 2
+
+[node name="MarginContainer" type="MarginContainer" parent="CenterContainer/PanelContainer"]
+layout_mode = 2
+theme_override_constants/margin_left = 20
+theme_override_constants/margin_top = 20
+theme_override_constants/margin_right = 20
+theme_override_constants/margin_bottom = 20
+
+[node name="VSplitContainer" type="VSplitContainer" parent="CenterContainer/PanelContainer/MarginContainer"]
+layout_mode = 2
+
+[node name="Drawing" type="HSplitContainer" parent="CenterContainer/PanelContainer/MarginContainer/VSplitContainer"]
+layout_mode = 2
+
+[node name="GridContainer" type="GridContainer" parent="CenterContainer/PanelContainer/MarginContainer/VSplitContainer/Drawing"]
+layout_mode = 2
+mouse_filter = 0
+mouse_default_cursor_shape = 2
+theme_override_constants/h_separation = 0
+theme_override_constants/v_separation = 0
+
+[node name="ColorPickerButton" type="ColorPickerButton" parent="CenterContainer/PanelContainer/MarginContainer/VSplitContainer/Drawing"]
+layout_mode = 2
+text = "Color"
+color = Color(1, 0.294118, 1, 1)
+
+[node name="Actions" type="HSplitContainer" parent="CenterContainer/PanelContainer/MarginContainer/VSplitContainer"]
+layout_mode = 2
+
+[node name="Reset" type="Button" parent="CenterContainer/PanelContainer/MarginContainer/VSplitContainer/Actions"]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "RESET"
+
+[node name="Save and Close" type="Button" parent="CenterContainer/PanelContainer/MarginContainer/VSplitContainer/Actions"]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "SAVE & CLOSE"
+
+[connection signal="color_changed" from="CenterContainer/PanelContainer/MarginContainer/VSplitContainer/Drawing/ColorPickerButton" to="." method="_on_color_picker_button_color_changed"]
+[connection signal="pressed" from="CenterContainer/PanelContainer/MarginContainer/VSplitContainer/Actions/Reset" to="." method="_on_reset_pressed"]
+[connection signal="pressed" from="CenterContainer/PanelContainer/MarginContainer/VSplitContainer/Actions/Save and Close" to="." method="_on_save_and_close_pressed"]

@@ -1,0 +1,22 @@
+[gd_scene load_steps=3 format=3 uid="uid://xv6xvvh3rv5u"]
+
+[ext_resource type="PackedScene" uid="uid://ds0agcmgxj40a" path="res://scenes/painting.tscn" id="1_g1o2c"]
+[ext_resource type="PackedScene" uid="uid://b7o0y770a8aaq" path="res://scenes/canvas.tscn" id="2_k0qcd"]
+
+[node name="Game" type="Node2D"]
+
+[node name="Painting" parent="." instance=ExtResource("1_g1o2c")]
+
+[node name="Camera2D" type="Camera2D" parent="Painting"]
+zoom = Vector2(8, 8)
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="Canvas" parent="CanvasLayer" instance=ExtResource("2_k0qcd")]
+unique_name_in_owner = true
+visible = false
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
